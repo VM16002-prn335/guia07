@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:cc="http://xmlns.jcp.org/jsf/composite"
+      xmlns:p="http://primefaces.org/ui">
+
+    <!-- INTERFACE -->
+    <cc:interface>
+        <cc:attribute name="listener" required="true" type="sv.edu.uesocc.ingenieria.prn335_2017.web.controladores.GenericManagedBean"/>
+        <cc:attribute name="updates" required="true" type="java.lang.String" />
+        <cc:attribute name="renderBtns" required="true" type="java.lang.Boolean"/>
+        <cc:attribute name="entidad" rendered="false" type="java.lang.String" default="" />
+         
+    </cc:interface>
+
+    <!-- IMPLEMENTATION -->
+    <cc:implementation>
+        <p:commandButton value="#{componente['crud.new']} #{cc.attrs.entidad}" actionListener="#{cc.attrs.listener.crear()}" update="#{cc.attrs.updates}" rendered="#{cc.attrs.renderBtns}" />
+        <p:commandButton value="#{componente['crud.edit']}  #{cc.attrs.entidad}" actionListener="#{cc.attrs.listener.editar()}" update="#{cc.attrs.updates}" rendered="#{!cc.attrs.renderBtns}" />
+        <p:commandButton value="#{componente['crud.delete']}  #{cc.attrs.entidad}" actionListener="#{cc.attrs.listener.eliminar()}" update="#{cc.attrs.updates}" rendered="#{!cc.attrs.renderBtns}" />
+    </cc:implementation>
+</html>
